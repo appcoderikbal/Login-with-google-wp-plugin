@@ -175,7 +175,7 @@ class LWG_Updater {
         }
 
         $res                = new stdClass();
-        $res->name          = 'Login with Google';
+        $res->name          = 'Google Login by Ikbal';
         $res->slug          = $this->basename;
         $res->version       = $remote_data['version'];
         $res->tested        = get_bloginfo( 'version' );

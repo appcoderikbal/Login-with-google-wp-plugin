@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Login with Google
+ * Plugin Name: Google Login by Ikbal
  * Plugin URI: https://github.com/appcoderikbal/Login-with-google-wp-plugin
  * Description: Allow users to login or register on your WordPress site using their Google account. Provides a shortcode [login_with_google] to display the button.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: Ikbal Singh
  * Author URI: https://github.com/appcoderikbal
  * License: GPL v2 or later
@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('LWG_VERSION', '1.0.3');
+define('LWG_VERSION', '1.0.4');
 define('LWG_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('LWG_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('LWG_PLUGIN_FILE', __FILE__);

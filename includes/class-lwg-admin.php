@@ -26,8 +26,8 @@ class LWG_Admin {
      */
     public function add_admin_menu() {
         add_options_page(
-            __( 'Login with Google', 'login-with-google' ),
-            __( 'Login with Google', 'login-with-google' ),
+            __( 'Google Login by Ikbal', 'login-with-google' ),
+            __( 'Google Login by Ikbal', 'login-with-google' ),
             'manage_options',
             'login-with-google',
             array( $this, 'render_settings_page' )
@@ -301,7 +301,7 @@ class LWG_Admin {
                     </svg>
                 </div>
                 <div class="lwg-header-text">
-                    <h1><?php echo esc_html__( 'Login with Google', 'login-with-google' ); ?></h1>
+                    <h1><?php echo esc_html__( 'Google Login by Ikbal', 'login-with-google' ); ?></h1>
                     <p class="lwg-version">v<?php echo esc_html( LWG_VERSION ); ?></p>
                 </div>
             </div>
