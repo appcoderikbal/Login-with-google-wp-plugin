@@ -1,0 +1,372 @@
+/**
+ * Login with Google - Admin Styles
+ *
+ * @package Login_With_Google
+ */
+
+/* ============================
+   Header
+   ============================ */
+.lwg-settings-wrap {
+    max-width: 1200px;
+    margin: 20px 20px 20px 0;
+}
+
+.lwg-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 28px;
+    background: linear-gradient(135deg, #4285F4, #34A853);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(66, 133, 244, 0.3);
+}
+
+.lwg-header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+}
+
+.lwg-header-text h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+.lwg-version {
+    margin: 4px 0 0 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+}
+
+/* ============================
+   Content Layout
+   ============================ */
+.lwg-content {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .lwg-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.lwg-main {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* ============================
+   Section Styles
+   ============================ */
+.lwg-main h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin: 32px 0 12px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.lwg-main h2:first-of-type {
+    margin-top: 0;
+}
+
+.lwg-section-desc {
+    color: #5f6368;
+    font-size: 14px;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.lwg-section-desc a {
+    color: #4285F4;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.lwg-section-desc a:hover {
+    text-decoration: underline;
+}
+
+/* ============================
+   Setup Steps
+   ============================ */
+.lwg-setup-steps {
+    background: #f8f9ff;
+    border: 1px solid #e3e8ff;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+}
+
+.lwg-setup-steps h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4285F4;
+}
+
+.lwg-setup-steps ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.lwg-setup-steps li {
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #3c4043;
+    line-height: 1.5;
+}
+
+.lwg-setup-steps li:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================
+   Form Fields
+   ============================ */
+.lwg-main .form-table th {
+    font-size: 14px;
+    font-weight: 500;
+    color: #3c4043;
+    padding: 16px 12px 16px 0;
+    vertical-align: top;
+    width: 180px;
+}
+
+.lwg-main .form-table td {
+    padding: 12px 0;
+}
+
+.lwg-input {
+    border: 1px solid #dadce0 !important;
+    border-radius: 6px !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    background: #ffffff !important;
+}
+
+.lwg-input:focus {
+    border-color: #4285F4 !important;
+    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.15) !important;
+    outline: none !important;
+}
+
+.lwg-readonly {
+    background: #f8f9fa !important;
+    color: #5f6368 !important;
+    cursor: pointer !important;
+}
+
+.lwg-password-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.lwg-toggle-password {
+    min-width: 60px;
+    font-size: 13px !important;
+}
+
+.lwg-copy-btn {
+    margin-left: 8px;
+    font-size: 13px !important;
+    vertical-align: middle;
+}
+
+.form-table td .description {
+    font-size: 12px;
+    color: #80868b;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+/* ============================
+   Toggle Switch
+   ============================ */
+.lwg-toggle {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.lwg-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.lwg-toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 26px;
+    transition: all 0.3s ease;
+}
+
+.lwg-toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.lwg-toggle input:checked + .lwg-toggle-slider {
+    background-color: #4285F4;
+}
+
+.lwg-toggle input:checked + .lwg-toggle-slider::before {
+    transform: translateX(22px);
+}
+
+.lwg-toggle input:focus + .lwg-toggle-slider {
+    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2);
+}
+
+/* ============================
+   Save Button
+   ============================ */
+.lwg-save-btn {
+    background: #4285F4 !important;
+    border-color: #3367d6 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding: 8px 28px !important;
+    border-radius: 6px !important;
+    letter-spacing: 0.25px;
+    transition: all 0.2s ease !important;
+    text-shadow: none !important;
+}
+
+.lwg-save-btn:hover {
+    background: #3367d6 !important;
+    border-color: #2a56c6 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(66, 133, 244, 0.35) !important;
+}
+
+.lwg-save-btn:active {
+    transform: translateY(0);
+}
+
+/* ============================
+   Sidebar Cards
+   ============================ */
+.lwg-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.lwg-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.lwg-card h3 {
+    margin: 0 0 12px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.lwg-card p {
+    font-size: 13px;
+    color: #5f6368;
+    line-height: 1.5;
+    margin: 0 0 12px 0;
+}
+
+.lwg-shortcode-display {
+    display: block;
+    background: #f8f9fa;
+    border: 1px solid #e8eaed;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    color: #4285F4;
+    text-align: center;
+    user-select: all;
+    cursor: pointer;
+}
+
+/* ============================
+   Status List
+   ============================ */
+.lwg-status-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lwg-status-list li {
+    padding: 8px 0;
+    font-size: 13px;
+    color: #3c4043;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.lwg-status-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* ============================
+   Responsive
+   ============================ */
+@media (max-width: 782px) {
+    .lwg-header {
+        padding: 16px 20px;
+    }
+
+    .lwg-header-text h1 {
+        font-size: 20px;
+    }
+
+    .lwg-main {
+        padding: 20px;
+    }
+
+    .lwg-main .form-table th {
+        width: auto;
+        display: block;
+        padding-bottom: 4px;
+    }
+}
