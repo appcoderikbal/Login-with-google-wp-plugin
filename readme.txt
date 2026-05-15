@@ -4,7 +4,7 @@ Tags: google login, social login, google oauth, sign in with google, google regi
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,10 @@ Yes, you can change the button text from the settings page, and use custom CSS c
 Yes, the plugin uses OAuth 2.0 with CSRF protection via WordPress nonces and state verification.
 
 == Changelog ==
+
+= 1.0.3 =
+* Fix: Removed static method dependency that caused fatal errors
+* Plugin now loads reliably on all setups
 
 = 1.0.2 =
 * Fix: Replaced REST API callback with reliable query parameter callback
