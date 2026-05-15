@@ -159,7 +159,7 @@ class LWG_Admin {
         $sanitized = array();
         $sanitized['client_id']           = sanitize_text_field( $input['client_id'] ?? '' );
         $sanitized['client_secret']       = sanitize_text_field( $input['client_secret'] ?? '' );
-        $sanitized['redirect_uri']        = esc_url_raw( home_url( '/wp-json/lwg/v1/callback' ) );
+        $sanitized['redirect_uri']        = esc_url_raw( LWG_Google_Auth::get_callback_url() );
         $sanitized['button_text']         = sanitize_text_field( $input['button_text'] ?? 'Sign in with Google' );
         $sanitized['show_on_login_page']  = isset( $input['show_on_login_page'] ) ? 1 : 0;
         $sanitized['redirect_after_login']= esc_url_raw( $input['redirect_after_login'] ?? home_url() );
@@ -230,7 +230,7 @@ class LWG_Admin {
      * Render readonly field
      */
     public function render_readonly_field( $args ) {
-        $value = home_url( '/wp-json/lwg/v1/callback' );
+        $value = LWG_Google_Auth::get_callback_url();
         printf(
             '<input type="text" id="lwg_%s" value="%s" class="regular-text lwg-input lwg-readonly" readonly onclick="this.select();document.execCommand(\'copy\');"/>',
             esc_attr( $args['field'] ),

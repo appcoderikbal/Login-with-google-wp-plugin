@@ -19,25 +19,27 @@ class LWG_Google_Auth {
     const GOOGLE_USER_URL  = 'https://www.googleapis.com/oauth2/v2/userinfo';
 
     /**
+     * The callback query parameter used to identify our callback
+     */
+    const CALLBACK_PARAM = 'lwg_callback';
+
+    /**
      * Constructor
      */
     public function __construct() {
-        // Register REST API callback endpoint
-        add_action( 'rest_api_init', array( $this, 'register_callback_route' ) );
-
-        // Register the auth initiation endpoint
+        // Handle Google OAuth callback and auth initiation via init hook
+        // This is more reliable than REST API across different hosting environments
         add_action( 'init', array( $this, 'handle_auth_redirect' ) );
+        add_action( 'init', array( $this, 'handle_callback_init' ) );
     }
 
     /**
-     * Register the callback route
+     * Get the callback URL
+     *
+     * @return string
      */
-    public function register_callback_route() {
-        register_rest_route( 'lwg/v1', '/callback', array(
-            'methods'             => 'GET',
-            'callback'            => array( $this, 'handle_callback' ),
-            'permission_callback' => '__return_true',
-        ) );
+    public static function get_callback_url() {
+        return home_url( '/?lwg_callback=1' );
     }
 
     /**
@@ -65,7 +67,7 @@ class LWG_Google_Auth {
 
         $params = array(
             'client_id'     => $options['client_id'],
-            'redirect_uri'  => home_url( '/wp-json/lwg/v1/callback' ),
+            'redirect_uri'  => self::get_callback_url(),
             'response_type' => 'code',
             'scope'         => 'email profile openid',
             'state'         => $state,
@@ -91,12 +93,16 @@ class LWG_Google_Auth {
     }
 
     /**
-     * Handle the OAuth callback from Google
+     * Handle the OAuth callback via init hook (reliable on all hosts)
      */
-    public function handle_callback( $request ) {
-        $code  = $request->get_param( 'code' );
-        $state = $request->get_param( 'state' );
-        $error = $request->get_param( 'error' );
+    public function handle_callback_init() {
+        if ( ! isset( $_GET[ self::CALLBACK_PARAM ] ) ) {
+            return;
+        }
+
+        $code  = isset( $_GET['code'] ) ? sanitize_text_field( $_GET['code'] ) : '';
+        $state = isset( $_GET['state'] ) ? sanitize_text_field( $_GET['state'] ) : '';
+        $error = isset( $_GET['error'] ) ? sanitize_text_field( $_GET['error'] ) : '';
 
         // Handle errors from Google
         if ( ! empty( $error ) ) {
@@ -171,7 +177,7 @@ class LWG_Google_Auth {
                 'code'          => $code,
                 'client_id'     => $options['client_id'],
                 'client_secret' => $options['client_secret'],
-                'redirect_uri'  => home_url( '/wp-json/lwg/v1/callback' ),
+                'redirect_uri'  => self::get_callback_url(),
                 'grant_type'    => 'authorization_code',
             ),
         ) );
