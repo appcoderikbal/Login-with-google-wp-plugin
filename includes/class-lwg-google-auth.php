@@ -242,12 +242,7 @@ class LWG_Google_Auth {
             return $existing_user;
         }
 
-        // Check if registration is allowed
-        if ( ! get_option( 'users_can_register' ) ) {
-            return new WP_Error( 'registration_disabled', __( 'User registration is currently disabled. Please contact the site administrator.', 'login-with-google' ) );
-        }
-
-        // Register new user
+        // Register new user (Google OAuth bypasses the general WordPress registration setting)
         $options = get_option( 'lwg_settings', array() );
         $default_role = ! empty( $options['default_role'] ) ? $options['default_role'] : get_option( 'default_role', 'subscriber' );
 
